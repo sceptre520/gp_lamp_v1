@@ -23,14 +23,12 @@ max_allowed_packet	= 16M
 thread_stack		= 192K
 thread_cache_size   = 8
 
-myisam-recover-options  = BACKUP
-query_cache_limit	    = 1M
-query_cache_size        = 16M
 
 general_log_file        = /workspace/lamp/mysql/logs/mysql.log
 general_log             = 1
 log_error               = /workspace/lamp/mysql/logs/error.log
 
+binlog-expire-logs-seconds=604800
 max_binlog_size     = 100M
 
 [client]
