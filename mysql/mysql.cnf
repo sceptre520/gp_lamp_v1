@@ -31,7 +31,6 @@ general_log_file        = /workspace/lamp/mysql/logs/mysql.log
 general_log             = 1
 log_error               = /workspace/lamp/mysql/logs/error.log
 
-expire_logs_days	= 10
 max_binlog_size     = 100M
 
 [client]
