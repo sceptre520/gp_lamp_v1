@@ -1,0 +1,7 @@
+// $Id: newsletter.scss 67883 2018-10-07 08:44:11Z chibaguy $
+/* FiveAlive-lite theme newsletter stylesheet */
+@import url("//fonts.googleapis.com/css?family=Lato");
+@import "../../base_files/scss/newsletter.scss";
+@import "variables";
+$font-family-sans-serif: Lato, sans-serif;
+$font-family-base: $font-family-sans-serif;

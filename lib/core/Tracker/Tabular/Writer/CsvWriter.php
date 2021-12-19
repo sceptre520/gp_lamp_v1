@@ -1,0 +1,49 @@
+<?php
+
+// (c) Copyright by authors of the Tiki Wiki CMS Groupware Project
+//
+// All Rights Reserved. See copyright.txt for details and a complete list of authors.
+// Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See license.txt for details.
+// $Id: CsvWriter.php 79238 2021-11-09 16:10:23Z kroky6 $
+
+namespace Tracker\Tabular\Writer;
+
+class CsvWriter
+{
+    private $file;
+
+    public function __construct($outputFile)
+    {
+        $this->file = new \SplFileObject($outputFile, 'w');
+    }
+
+    public function sendHeaders($filename = 'tiki-tracker-tabular-export.csv')
+    {
+        header('Content-Type: text/csv; charset=utf8');
+        header("Content-Disposition:attachment;filename=$filename");
+    }
+
+    public function write(\Tracker\Tabular\Source\SourceInterface $source)
+    {
+        $schema = $source->getSchema();
+        $schema = $schema->getPlainOutputSchema();
+        $schema->validate();
+
+        $columns = $schema->getColumns();
+        $headers = [];
+        foreach ($columns as $column) {
+            $headers[] = $column->getEncodedHeader();
+        }
+        $this->file->fputcsv($headers);
+
+        foreach ($source->getEntries() as $entry) {
+            $row = [];
+
+            foreach ($columns as $column) {
+                $row[] = $entry->render($column, false);
+            }
+
+            $this->file->fputcsv($row);
+        }
+    }
+}

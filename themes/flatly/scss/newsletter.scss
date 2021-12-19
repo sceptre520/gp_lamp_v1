@@ -1,0 +1,9 @@
+// $Id: newsletter.scss 64878 2017-12-12 09:50:55Z chibaguy $
+/* Flatly theme newsletter stylesheet */
+$web-font-path: "https://fonts.googleapis.com/css?family=Lato:400,700,400italic" !default;
+@import url($web-font-path);
+@import "../../base_files/scss/newsletter.scss";
+@import "_variables.scss";
+
+$font-family-sans-serif:  "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-base:        $font-family-sans-serif;
